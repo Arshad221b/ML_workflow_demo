@@ -11,7 +11,7 @@ import config
 def run(fold):
     df = pd.read_csv(config.TRAINING_FILE)
     df_train = df[df.kfold != fold].reset_index(drop=True)
-    df_valid = df[df.kfold != fold].reset_index(drop=True)
+    df_valid = df[df.kfold == fold].reset_index(drop=True)
 
     x_train = df_train.drop(config.LABEL, axis=1).values
     y_train = df_train[config.LABEL].values
